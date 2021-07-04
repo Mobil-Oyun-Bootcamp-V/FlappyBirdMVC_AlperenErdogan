@@ -12,7 +12,6 @@ public class PipeView : MonoBehaviour
     public float xPos, minY, maxY;
     private float _time = 0;
     private float _rate;
-    private bool _freeze = false;
     public float Rate
     {
         set => _rate = value;
@@ -25,8 +24,7 @@ public class PipeView : MonoBehaviour
 
     private void Update()
     {
-        if (!_freeze)
-            _time += Time.deltaTime;
+        _time += Time.deltaTime;
         if (!(_time >= _rate)) return;
         _time = 0;
         Tick?.Invoke();
